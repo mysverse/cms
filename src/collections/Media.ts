@@ -1,16 +1,26 @@
+import { afterChangeHook } from '@/hooks/mediaRoblox'
 import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
-  access: {
-    read: () => true,
+  upload: {
+    // Remove local storage configuration
+    // Configure to use the S3 plugin
+    // 'staticDir' is no longer needed
+    mimeTypes: ['image/*'],
   },
   fields: [
     {
-      name: 'alt',
+      name: 'title',
       type: 'text',
-      required: true,
+    },
+    {
+      name: 'robloxAssetId',
+      type: 'text',
     },
   ],
-  upload: true,
+  hooks: {
+    // beforeChange: [beforeChangeHook],
+    afterChange: [afterChangeHook],
+  },
 }
