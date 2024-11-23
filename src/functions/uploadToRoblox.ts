@@ -1,6 +1,7 @@
 import type { Media } from '@/payload-types'
 import mime from 'mime-types'
 import { getFileFromR2 } from '@/utils/r2helpers' // Adjust the path as necessary
+import { getImageIdFromAssetId } from '@/utils/robloxAsset'
 
 interface Operation {
   operationId: string
@@ -89,10 +90,15 @@ const uploadToRoblox = async (doc: Partial<Media>): Promise<string> => {
   } while (!data.done)
 
   if (data.response) {
-    return data.response.assetId
-  } else {
-    throw new Error('No response from Roblox')
+    const assetId = data.response.assetId
+    if (assetId) {
+      const imageData = await getImageIdFromAssetId(assetId)
+      if (imageData) {
+        return imageData.id
+      }
+    }
   }
+  throw new Error('No response from Roblox')
 }
 
 export default uploadToRoblox

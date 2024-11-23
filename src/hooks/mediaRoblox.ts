@@ -16,7 +16,6 @@ export const afterChangeHook: CollectionAfterChangeHook<Media> = async ({
     try {
       const robloxAssetId = await uploadToRoblox(doc)
       // Update the document with the robloxAssetId
-      console.log(robloxAssetId)
       await req.payload.update({
         req,
         collection: 'media',
