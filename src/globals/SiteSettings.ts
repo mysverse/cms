@@ -1,6 +1,6 @@
-import type { CollectionConfig } from 'payload'
+import type { GlobalConfig } from 'payload'
 
-export const SiteSettings: CollectionConfig = {
+export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
   fields: [
     {
@@ -16,6 +16,7 @@ export const SiteSettings: CollectionConfig = {
       type: 'date',
       required: true,
       defaultValue: new Date(),
+      hidden: true,
     },
     {
       name: 'notify',

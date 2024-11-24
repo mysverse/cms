@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { updateLastUpdatedHook } from '@/hooks/updateDate'
 
 export const Announcements: CollectionConfig = {
   slug: 'announcements',
@@ -28,4 +29,7 @@ export const Announcements: CollectionConfig = {
       defaultValue: false,
     },
   ],
+  hooks: {
+    afterChange: [updateLastUpdatedHook],
+  },
 }

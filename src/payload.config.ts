@@ -11,7 +11,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { News } from './collections/News'
 import { Announcements } from './collections/Announcements'
-import { SiteSettings } from './collections/SiteSettings'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,7 +23,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, News, Announcements, SiteSettings],
+  collections: [Users, Media, News, Announcements],
+  globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

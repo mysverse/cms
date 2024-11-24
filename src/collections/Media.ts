@@ -1,5 +1,6 @@
-import { afterChangeHook } from '@/hooks/mediaRoblox'
 import type { CollectionConfig } from 'payload'
+import { afterChangeHook } from '@/hooks/mediaRoblox'
+import { updateLastUpdatedHook } from '@/hooks/updateDate'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -21,6 +22,6 @@ export const Media: CollectionConfig = {
   ],
   hooks: {
     // beforeChange: [beforeChangeHook],
-    afterChange: [afterChangeHook],
+    afterChange: [afterChangeHook, updateLastUpdatedHook],
   },
 }

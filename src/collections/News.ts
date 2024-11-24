@@ -1,6 +1,7 @@
 // collections/News.ts
 
 import type { CollectionConfig } from 'payload'
+import { updateLastUpdatedHook } from '@/hooks/updateDate'
 
 export const News: CollectionConfig = {
   slug: 'news',
@@ -21,4 +22,7 @@ export const News: CollectionConfig = {
       relationTo: 'media',
     },
   ],
+  hooks: {
+    afterChange: [updateLastUpdatedHook],
+  },
 }
