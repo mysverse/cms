@@ -1,3 +1,4 @@
+import { updateWebhookHook } from '@/hooks/updateWebhook'
 import type { GlobalConfig } from 'payload'
 
 export const SiteSettings: GlobalConfig = {
@@ -17,6 +18,9 @@ export const SiteSettings: GlobalConfig = {
       required: true,
       defaultValue: new Date(),
       hidden: true,
+      hooks: {
+        afterChange: [updateWebhookHook],
+      },
     },
     {
       name: 'notify',

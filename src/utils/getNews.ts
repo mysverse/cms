@@ -1,7 +1,7 @@
 import configPromise from '@payload-config'
-import { getPayload } from 'payload'
+import { getPayload, PayloadRequest } from 'payload'
 
-export async function getNews() {
+export async function getNews(req?: PayloadRequest) {
   const payload = await getPayload({
     config: configPromise,
   })
@@ -10,6 +10,7 @@ export async function getNews() {
   const [pageSettings, announcements, newsItems] = await Promise.all([
     payload.findGlobal({
       slug: 'site-settings',
+      req,
     }),
     payload.find({
       collection: 'announcements',
@@ -18,10 +19,12 @@ export async function getNews() {
           equals: true,
         },
       },
+      req,
     }),
     payload.find({
       collection: 'news',
       limit: 10, // Adjust as needed
+      req,
     }),
   ])
 
