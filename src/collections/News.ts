@@ -23,6 +23,6 @@ export const News: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [updateLastUpdatedHook],
+    afterOperation: [updateLastUpdatedHook],
   },
 }

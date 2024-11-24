@@ -30,6 +30,6 @@ export const Announcements: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [updateLastUpdatedHook],
+    afterOperation: [updateLastUpdatedHook],
   },
 }
