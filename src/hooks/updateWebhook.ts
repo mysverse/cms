@@ -7,8 +7,8 @@ type UpdateWebhookHook = FieldHook<SiteSetting, string, Date>
 const webhook = process.env.CF_WORKER_WEBHOOK
 const apiKey = process.env.CF_WORKER_WEBHOOK_AUTHORIZATION
 
-export const updateWebhookHook: UpdateWebhookHook = async ({ value, operation, req }) => {
-  if (operation === 'update') {
+export const updateWebhookHook: UpdateWebhookHook = async ({ value, previousValue, req }) => {
+  if (value !== previousValue) {
     if (webhook && webhook.trim().length > 0 && webhook.match(/^https?:\/\//)) {
       const news = await getNews(req)
       const headers = new Headers()

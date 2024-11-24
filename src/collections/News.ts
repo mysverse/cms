@@ -9,12 +9,12 @@ export const News: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'content',
-      type: 'richText',
-      required: true,
+      type: 'text',
+      required: false,
     },
     {
       name: 'image',
