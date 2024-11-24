@@ -33,7 +33,7 @@ export async function getNews(req?: PayloadRequest) {
     .map((item) => {
       const image = item.image && typeof item.image === 'object' ? item.image : undefined
       return {
-        Name: item.title,
+        Name: item.title ?? 'Title',
         Image: image && image.robloxAssetId,
         Url: image?.url,
         AspectRatio: image && image.width && image.height ? image.width / image.height : null,
