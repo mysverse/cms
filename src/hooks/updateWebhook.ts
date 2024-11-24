@@ -5,7 +5,7 @@ import type { FieldHook } from 'payload'
 type UpdateWebhookHook = FieldHook<SiteSetting, string, Date>
 
 const webhook = process.env.CF_WORKER_WEBHOOK
-const apiKey = process.env.CF_WORKER_WEBHOOK_API_KEY
+const apiKey = process.env.CF_WORKER_WEBHOOK_AUTHORIZATION
 
 export const updateWebhookHook: UpdateWebhookHook = async ({ value, operation, req }) => {
   if (operation === 'update') {
