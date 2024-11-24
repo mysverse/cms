@@ -1,13 +1,14 @@
-import type { CollectionAfterOperationHook } from 'payload'
+import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-export const updateLastUpdatedHook: CollectionAfterOperationHook = async ({ req, operation }) => {
-  if (operation === 'update' || operation === 'create' || operation === 'delete') {
-    await req.payload.updateGlobal({
-      req,
-      slug: 'site-settings',
-      data: {
-        lastUpdated: new Date().toISOString(),
-      },
-    })
-  }
+export const updateLastUpdatedHook: CollectionAfterChangeHook & CollectionAfterDeleteHook = async ({
+  req,
+}) => {
+  const lastUpdated = new Date().toISOString()
+  await req.payload.updateGlobal({
+    req,
+    slug: 'site-settings',
+    data: {
+      lastUpdated,
+    },
+  })
 }

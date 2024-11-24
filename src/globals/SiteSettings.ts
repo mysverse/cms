@@ -1,5 +1,5 @@
-import { updateWebhookHook } from '@/hooks/updateWebhook'
 import type { GlobalConfig } from 'payload'
+import { updateWebhookHook } from '@/hooks/updateWebhook'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -17,10 +17,6 @@ export const SiteSettings: GlobalConfig = {
       type: 'date',
       required: true,
       defaultValue: new Date(),
-      hidden: true,
-      hooks: {
-        afterChange: [updateWebhookHook],
-      },
     },
     {
       name: 'notify',
@@ -29,4 +25,7 @@ export const SiteSettings: GlobalConfig = {
       defaultValue: false,
     },
   ],
+  hooks: {
+    afterChange: [updateWebhookHook],
+  },
 }

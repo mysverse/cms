@@ -9,11 +9,11 @@ export const News: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
-      required: false,
+      required: true,
     },
     {
       name: 'content',
-      type: 'text',
+      type: 'textarea',
       required: false,
     },
     {
@@ -23,6 +23,7 @@ export const News: CollectionConfig = {
     },
   ],
   hooks: {
-    afterOperation: [updateLastUpdatedHook],
+    afterChange: [updateLastUpdatedHook],
+    afterDelete: [updateLastUpdatedHook],
   },
 }

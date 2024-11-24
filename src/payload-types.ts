@@ -108,7 +108,7 @@ export interface Media {
  */
 export interface News {
   id: number;
-  title?: string | null;
+  title: string;
   content?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
