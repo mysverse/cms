@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 import { News } from './collections/News'
 import { Announcements } from './collections/Announcements'
 import { SiteSettings } from './globals/SiteSettings'
+import Logo from './graphics/Logo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,6 +22,12 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    components: {
+      graphics: {
+        Icon: 'src/graphics/Icon',
+        Logo: 'src/graphics/Logo',
+      },
     },
   },
   collections: [Users, Media, News, Announcements],
