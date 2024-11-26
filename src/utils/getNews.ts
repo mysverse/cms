@@ -35,7 +35,10 @@ export async function getNews(req?: PayloadRequest) {
       return {
         Name: item.title ?? 'Title',
         Image: image && image.robloxAssetId,
-        Url: image?.url,
+        Url:
+          image && image.filename && process.env.S3_PUBLIC_ENDPOINT
+            ? `${process.env.S3_PUBLIC_ENDPOINT}/${encodeURIComponent(image.filename)}`
+            : image?.url,
         AspectRatio: image && image.width && image.height ? image.width / image.height : null,
       }
     })
