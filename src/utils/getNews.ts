@@ -45,7 +45,7 @@ export async function getNews(req?: PayloadRequest) {
             : null,
       }
     })
-    .filter((item) => item.AspectRatio !== null) // Remove null AspectRatio if not needed
+    .filter((item) => item.Image)
 
   // Assemble Announcements Array
   const announcements = announcementDocs.docs.map((ann) => ({
