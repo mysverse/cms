@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { afterChangeHook } from '@/hooks/mediaRoblox'
+import { uploadToRobloxHook } from '@/hooks/mediaRoblox'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -20,6 +20,6 @@ export const Media: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [afterChangeHook],
+    afterChange: [uploadToRobloxHook],
   },
 }

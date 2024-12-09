@@ -2,7 +2,7 @@ import uploadToRoblox from '@/functions/uploadToRoblox'
 import { Media } from '@/payload-types'
 import type { CollectionAfterChangeHook } from 'payload'
 
-export const afterChangeHook: CollectionAfterChangeHook<Media> = async ({
+export const uploadToRobloxHook: CollectionAfterChangeHook<Media> = async ({
   doc,
   previousDoc,
   operation,
