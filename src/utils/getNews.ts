@@ -42,7 +42,7 @@ export async function getNews(req?: PayloadRequest) {
         AspectRatio:
           image && image.width && image.height && !(image.width === 600 && image.height === 255)
             ? image.width / image.height
-            : null,
+            : undefined,
       }
     })
     .filter((item) => item.Image)
