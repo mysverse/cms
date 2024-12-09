@@ -2,7 +2,8 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   await payload.db.drizzle.execute(sql`
-   CREATE TABLE IF NOT EXISTS "users" (
+   CREATE TYPE "public"."enum_announcements_place" AS ENUM('Lebuhraya', 'Bandaraya');
+  CREATE TABLE IF NOT EXISTS "users" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -34,7 +35,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE IF NOT EXISTS "news" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
+  	"title" varchar NOT NULL,
   	"content" varchar,
   	"image_id" integer,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -43,7 +44,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE IF NOT EXISTS "announcements" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"place" varchar NOT NULL,
+  	"place" "enum_announcements_place" NOT NULL,
   	"value" varchar NOT NULL,
   	"active" boolean DEFAULT false,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -95,7 +96,7 @@ export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE IF NOT EXISTS "site_settings" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"notify_count" numeric DEFAULT 0 NOT NULL,
-  	"last_updated" timestamp(3) with time zone DEFAULT '2024-11-24T21:32:24.999Z' NOT NULL,
+  	"last_updated" timestamp(3) with time zone DEFAULT '2024-12-09T14:07:19.373Z' NOT NULL,
   	"notify" boolean DEFAULT false,
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
@@ -192,5 +193,6 @@ export async function down({ payload, req }: MigrateDownArgs): Promise<void> {
   DROP TABLE "payload_preferences" CASCADE;
   DROP TABLE "payload_preferences_rels" CASCADE;
   DROP TABLE "payload_migrations" CASCADE;
-  DROP TABLE "site_settings" CASCADE;`)
+  DROP TABLE "site_settings" CASCADE;
+  DROP TYPE "public"."enum_announcements_place";`)
 }

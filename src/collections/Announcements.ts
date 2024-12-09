@@ -13,7 +13,8 @@ export const Announcements: CollectionConfig = {
     {
       name: 'place',
       label: 'Place',
-      type: 'text',
+      type: 'select',
+      options: ['Lebuhraya', 'Bandaraya'],
       required: true,
     },
     {

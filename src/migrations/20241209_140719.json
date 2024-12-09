@@ -1,5 +1,5 @@
 {
-  "id": "8b8f3a93-3786-4812-bd46-53dc255302ed",
+  "id": "f928c7b1-da82-48c3-a49c-1d88d0b5fadb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -394,7 +394,8 @@
         },
         "place": {
           "name": "place",
-          "type": "varchar",
+          "type": "enum_announcements_place",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -1103,7 +1104,7 @@
           "type": "timestamp(3) with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-11-24T22:20:42.157Z'"
+          "default": "'2024-12-09T14:07:19.373Z'"
         },
         "notify": {
           "name": "notify",
@@ -1134,7 +1135,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.enum_announcements_place": {
+      "name": "enum_announcements_place",
+      "schema": "public",
+      "values": [
+        "Lebuhraya",
+        "Bandaraya"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

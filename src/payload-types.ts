@@ -120,7 +120,7 @@ export interface News {
  */
 export interface Announcement {
   id: number;
-  place: string;
+  place: 'Lebuhraya' | 'Bandaraya';
   value: string;
   active?: boolean | null;
   updatedAt: string;
