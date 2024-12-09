@@ -12,7 +12,6 @@ import { Media } from './collections/Media'
 import { News } from './collections/News'
 import { Announcements } from './collections/Announcements'
 import { SiteSettings } from './globals/SiteSettings'
-import Logo from './graphics/Logo'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
