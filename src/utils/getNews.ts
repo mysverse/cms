@@ -39,7 +39,10 @@ export async function getNews(req?: PayloadRequest) {
           image && image.filename && process.env.S3_PUBLIC_ENDPOINT
             ? `${process.env.S3_PUBLIC_ENDPOINT}/${encodeURIComponent(image.filename)}`
             : image?.url,
-        AspectRatio: image && image.width && image.height ? image.width / image.height : null,
+        AspectRatio:
+          image && image.width && image.height && !(image.width === 600 && image.height === 255)
+            ? image.width / image.height
+            : null,
       }
     })
     .filter((item) => item.AspectRatio !== null) // Remove null AspectRatio if not needed
