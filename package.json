@@ -25,7 +25,7 @@
     "form-data": "^4.0.1",
     "graphql": "^16.9.0",
     "mime-types": "^2.1.35",
-    "next": "15.0.4",
+    "next": "15.1.0",
     "payload": "latest",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -33,11 +33,11 @@
   },
   "devDependencies": {
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.16.0",
-    "eslint-config-next": "15.0.4",
+    "eslint-config-next": "15.1.0",
     "typescript": "5.7.2"
   },
   "engines": {
