@@ -110,6 +110,7 @@ export interface News {
   id: number;
   title: string;
   content?: string | null;
+  placeId?: number | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -232,6 +233,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface NewsSelect<T extends boolean = true> {
   title?: T;
   content?: T;
+  placeId?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;
