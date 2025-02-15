@@ -16,14 +16,14 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.744.0",
+    "@aws-sdk/client-s3": "^3.749.0",
     "@payloadcms/db-postgres": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-s3": "latest",
     "cross-env": "^7.0.3",
     "fast-xml-parser": "^4.5.1",
-    "form-data": "^4.0.1",
+    "form-data": "^4.0.2",
     "graphql": "^16.10.0",
     "mime-types": "^2.1.35",
     "next": "^15.1.7",
