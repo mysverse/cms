@@ -22,7 +22,7 @@
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-s3": "latest",
     "cross-env": "^7.0.3",
-    "fast-xml-parser": "^4.5.2",
+    "fast-xml-parser": "^5.0.1",
     "form-data": "^4.0.2",
     "graphql": "^16.10.0",
     "mime-types": "^2.1.35",
