@@ -16,7 +16,7 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.775.0",
+    "@aws-sdk/client-s3": "^3.777.0",
     "@payloadcms/db-postgres": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/richtext-lexical": "latest",
@@ -25,16 +25,16 @@
     "fast-xml-parser": "^5.0.9",
     "form-data": "^4.0.2",
     "graphql": "^16.10.0",
-    "mime-types": "^2.1.35",
+    "mime-types": "^3.0.1",
     "next": "^15.2.4",
     "payload": "latest",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "sharp": "0.33.5"
   },
   "devDependencies": {
     "@types/mime-types": "^2.1.4",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "eslint": "^9.23.0",

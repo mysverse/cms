@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 import { News } from './collections/News'
 import { Announcements } from './collections/Announcements'
 import { SiteSettings } from './globals/SiteSettings'
+import { EventCountdown } from './globals/EventCountdown'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,7 +31,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, News, Announcements],
-  globals: [SiteSettings],
+  globals: [SiteSettings, EventCountdown],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -54,6 +54,7 @@ export type SupportedTimezones =
   | 'Asia/Singapore'
   | 'Asia/Tokyo'
   | 'Asia/Seoul'
+  | 'Australia/Brisbane'
   | 'Australia/Sydney'
   | 'Pacific/Guam'
   | 'Pacific/Noumea'
@@ -89,9 +90,11 @@ export interface Config {
   };
   globals: {
     'site-settings': SiteSetting;
+    'event-countdown': EventCountdown;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'event-countdown': EventCountdownSelect<false> | EventCountdownSelect<true>;
   };
   locale: null;
   user: User & {
@@ -350,12 +353,38 @@ export interface SiteSetting {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-countdown".
+ */
+export interface EventCountdown {
+  id: number;
+  eventName?: string | null;
+  eventDate?: string | null;
+  backgroundImage?: (number | null) | Media;
+  eventImage?: (number | null) | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   notifyCount?: T;
   lastUpdated?: T;
   notify?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event-countdown_select".
+ */
+export interface EventCountdownSelect<T extends boolean = true> {
+  eventName?: T;
+  eventDate?: T;
+  backgroundImage?: T;
+  eventImage?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

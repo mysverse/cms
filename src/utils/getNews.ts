@@ -7,9 +7,13 @@ export async function getNews(req?: PayloadRequest) {
   })
 
   // Fetch Site Settings, Announcements, and News concurrently
-  const [pageSettings, announcementDocs, newsDocs] = await Promise.all([
+  const [pageSettings, eventCountdown, announcementDocs, newsDocs] = await Promise.all([
     payload.findGlobal({
       slug: 'site-settings',
+      req,
+    }),
+    payload.findGlobal({
+      slug: 'event-countdown',
       req,
     }),
     payload.find({
@@ -65,6 +69,20 @@ export async function getNews(req?: PayloadRequest) {
     Notify: pageSettings.notify ?? false,
     Announcements: announcements,
     News: news,
+    Event: {
+      Name: eventCountdown.eventName,
+      Date: eventCountdown.eventDate,
+      BackgroundImage:
+        (eventCountdown.backgroundImage &&
+          typeof eventCountdown.backgroundImage === 'object' &&
+          eventCountdown.backgroundImage.robloxAssetId) ??
+        undefined,
+      EventImage:
+        (eventCountdown.eventImage &&
+          typeof eventCountdown.eventImage === 'object' &&
+          eventCountdown.eventImage.robloxAssetId) ??
+        undefined,
+    },
   }
 
   return response
