@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { updateWebhookHook } from '@/hooks/updateWebhook'
+import { updateLastUpdatedHook } from '@/hooks/updateDate'
 
 export const EventCountdown: GlobalConfig = {
   slug: 'event-countdown',
@@ -35,6 +36,6 @@ export const EventCountdown: GlobalConfig = {
     },
   ],
   hooks: {
-    afterChange: [updateWebhookHook],
+    afterChange: [updateLastUpdatedHook],
   },
 }
