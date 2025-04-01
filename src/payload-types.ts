@@ -166,6 +166,7 @@ export interface Media {
  */
 export interface News {
   id: number;
+  _order?: string;
   title: string;
   content?: string | null;
   placeId?: number | null;
@@ -289,6 +290,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "news_select".
  */
 export interface NewsSelect<T extends boolean = true> {
+  _order?: T;
   title?: T;
   content?: T;
   placeId?: T;
