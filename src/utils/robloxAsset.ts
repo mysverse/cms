@@ -20,9 +20,20 @@ export async function getImageIDs(ids: string[]) {
   return imageIDs
 }
 
+async function getAssetXml(id: string) {
+  const response = await fetch(`https://apis.roblox.com/asset-delivery-api/v1/assetId/${id}`, {
+    headers: {
+      'x-api-key': process.env.ROBLOX_API_KEY || '',
+    },
+  })
+  const json = await response.json()
+  const location: string = json.location
+  const xmlResponse = await fetch(location)
+  return xmlResponse.text()
+}
+
 export async function getImageIdFromAssetId(id: string) {
-  const response = await fetch(`https://assetdelivery.roblox.com/v1/asset/?id=${id}`)
-  const text = await response.text()
+  const text = await getAssetXml(id)
   const parser = new XMLParser({
     ignoreAttributes: false,
   })
