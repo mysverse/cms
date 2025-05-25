@@ -72,7 +72,7 @@ export default buildConfig({
         pass: process.env.SMTP_PASS,
       },
     },
-    defaultFromAddress: 'mysair@mysver.se',
-    defaultFromName: 'MYSair',
+    defaultFromAddress: 'admin@mysver.se',
+    defaultFromName: 'MYSverse',
   }),
 })
