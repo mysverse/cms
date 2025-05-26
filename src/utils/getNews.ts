@@ -1,9 +1,9 @@
-import configPromise from '@payload-config'
+import config from '@payload-config'
 import { getPayload, PayloadRequest } from 'payload'
 
 export async function getNews(req?: PayloadRequest) {
   const payload = await getPayload({
-    config: configPromise,
+    config,
   })
 
   // Fetch Site Settings, Announcements, and News concurrently
@@ -27,6 +27,7 @@ export async function getNews(req?: PayloadRequest) {
     }),
     payload.find({
       collection: 'news',
+      sort: '-_order',
       req,
     }),
   ])
