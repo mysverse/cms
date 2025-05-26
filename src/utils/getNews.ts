@@ -27,8 +27,6 @@ export async function getNews(req?: PayloadRequest) {
     }),
     payload.find({
       collection: 'news',
-      sort: '-updatedAt',
-      limit: 10, // Adjust as needed
       req,
     }),
   ])
