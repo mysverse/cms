@@ -16,9 +16,9 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.817.0",
+    "@aws-sdk/client-s3": "^3.821.0",
     "@payloadcms/db-postgres": "latest",
-    "@payloadcms/email-nodemailer": "^3.39.1",
+    "@payloadcms/email-nodemailer": "^3.40.0",
     "@payloadcms/next": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-s3": "latest",
@@ -27,7 +27,7 @@
     "form-data": "^4.0.2",
     "graphql": "^16.11.0",
     "mime-types": "^3.0.1",
-    "next": "^15.3.2",
+    "next": "^15.3.3",
     "nodemailer": "^7.0.3",
     "payload": "latest",
     "react": "19.1.0",
@@ -35,12 +35,12 @@
     "sharp": "0.34.2"
   },
   "devDependencies": {
-    "@types/mime-types": "^2.1.4",
-    "@types/node": "^22.15.21",
-    "@types/react": "^19.1.5",
+    "@types/mime-types": "^3.0.0",
+    "@types/node": "^22.15.29",
+    "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
-    "eslint": "^9.27.0",
-    "eslint-config-next": "^15.3.2",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "^15.3.3",
     "typescript": "5.8.3"
   },
   "engines": {
