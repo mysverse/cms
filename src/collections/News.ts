@@ -22,6 +22,11 @@ export const News: CollectionConfig = {
       required: false,
     },
     {
+      name: 'eventId',
+      type: 'number',
+      required: false,
+    },
+    {
       name: 'image',
       type: 'relationship',
       relationTo: 'media',
