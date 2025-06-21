@@ -27,7 +27,7 @@ export async function getNews(req?: PayloadRequest) {
     }),
     payload.find({
       collection: 'news',
-      sort: '-_order',
+      sort: '-updatedAt',
       req,
     }),
   ])

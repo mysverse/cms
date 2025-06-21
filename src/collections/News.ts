@@ -27,7 +27,7 @@ export const News: CollectionConfig = {
       relationTo: 'media',
     },
   ],
-  orderable: true,
+  orderable: false,
   hooks: {
     afterChange: [updateLastUpdatedHook],
     afterDelete: [updateLastUpdatedHook],
