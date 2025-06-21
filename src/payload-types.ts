@@ -169,7 +169,7 @@ export interface News {
   title: string;
   content?: string | null;
   placeId?: number | null;
-  eventId?: number | null;
+  eventId?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;

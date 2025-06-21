@@ -23,7 +23,7 @@ export const News: CollectionConfig = {
     },
     {
       name: 'eventId',
-      type: 'number',
+      type: 'text',
       required: false,
     },
     {
