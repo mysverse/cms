@@ -33,10 +33,10 @@ export const getFileFromR2 = async (key: string): Promise<Blob> => {
     throw new Error('Invalid stream')
   }
 
-  const chunks: Buffer[] = []
+  const chunks: Uint8Array[] = []
 
   for await (const chunk of stream) {
-    chunks.push(Buffer.from(chunk))
+    chunks.push(new Uint8Array(chunk))
   }
 
   return new Blob(chunks)
