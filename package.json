@@ -16,7 +16,7 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.862.0",
+    "@aws-sdk/client-s3": "^3.864.0",
     "@payloadcms/db-postgres": "^3.50.0",
     "@payloadcms/email-nodemailer": "^3.50.0",
     "@payloadcms/next": "^3.50.0",
@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "@types/mime-types": "^3.0.1",
-    "@types/node": "^22.17.0",
+    "@types/node": "^22.17.1",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
-    "eslint": "^9.32.0",
+    "eslint": "^9.33.0",
     "eslint-config-next": "^15.4.6",
     "typescript": "5.9.2"
   },
