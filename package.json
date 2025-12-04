@@ -16,20 +16,20 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.940.0",
-    "@payloadcms/db-postgres": "^3.65.0",
-    "@payloadcms/email-nodemailer": "^3.65.0",
-    "@payloadcms/next": "^3.65.0",
-    "@payloadcms/richtext-lexical": "^3.65.0",
-    "@payloadcms/storage-s3": "^3.65.0",
+    "@aws-sdk/client-s3": "^3.943.0",
+    "@payloadcms/db-postgres": "^3.66.0",
+    "@payloadcms/email-nodemailer": "^3.66.0",
+    "@payloadcms/next": "^3.66.0",
+    "@payloadcms/richtext-lexical": "^3.66.0",
+    "@payloadcms/storage-s3": "^3.66.0",
     "cross-env": "^10.1.0",
     "fast-xml-parser": "^5.3.2",
     "form-data": "^4.0.5",
     "graphql": "^16.12.0",
     "mime-types": "^3.0.2",
-    "next": "^15.5.6",
+    "next": "^15.5.7",
     "nodemailer": "^7.0.11",
-    "payload": "^3.65.0",
+    "payload": "^3.66.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "sharp": "0.34.5"
@@ -40,7 +40,7 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.1",
-    "eslint-config-next": "^15.5.6",
+    "eslint-config-next": "^15.5.7",
     "typescript": "5.9.3"
   },
   "engines": {
