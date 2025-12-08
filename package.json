@@ -16,12 +16,12 @@
     "ci": "payload migrate && next build"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.943.0",
-    "@payloadcms/db-postgres": "^3.66.0",
-    "@payloadcms/email-nodemailer": "^3.66.0",
-    "@payloadcms/next": "^3.66.0",
-    "@payloadcms/richtext-lexical": "^3.66.0",
-    "@payloadcms/storage-s3": "^3.66.0",
+    "@aws-sdk/client-s3": "^3.946.0",
+    "@payloadcms/db-postgres": "^3.67.0",
+    "@payloadcms/email-nodemailer": "^3.67.0",
+    "@payloadcms/next": "^3.67.0",
+    "@payloadcms/richtext-lexical": "^3.67.0",
+    "@payloadcms/storage-s3": "^3.67.0",
     "cross-env": "^10.1.0",
     "fast-xml-parser": "^5.3.2",
     "form-data": "^4.0.5",
@@ -29,7 +29,7 @@
     "mime-types": "^3.0.2",
     "next": "^15.5.7",
     "nodemailer": "^7.0.11",
-    "payload": "^3.66.0",
+    "payload": "^3.67.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "sharp": "0.34.5"
