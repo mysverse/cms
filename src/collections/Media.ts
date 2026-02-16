@@ -20,6 +20,6 @@ export const Media: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [uploadToRobloxHook],
+    beforeChange: [uploadToRobloxHook],
   },
 }

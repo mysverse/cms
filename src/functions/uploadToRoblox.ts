@@ -1,7 +1,5 @@
-import type { Media } from '@/payload-types'
-import mime from 'mime-types'
-import { getFileFromR2 } from '@/utils/r2helpers' // Adjust the path as necessary
 import { getImageIdFromAssetId } from '@/utils/robloxAsset'
+import type { PayloadRequest } from 'payload'
 
 interface Operation {
   operationId: string
@@ -13,35 +11,33 @@ interface Operation {
   }
 }
 
-const uploadToRoblox = async (doc: Partial<Media>): Promise<string> => {
-  if (!doc.filename) {
-    throw new Error('No filename provided')
+const SUPPORTED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/bmp', 'image/tga']
+
+const uploadToRoblox = async (file?: PayloadRequest['file']): Promise<string> => {
+  if (!file) {
+    throw new Error('No file provided')
   }
 
-  const apiKey = process.env.ROBLOX_API_KEY // Securely store your API key
-  const userId = process.env.ROBLOX_USER_ID // Or user ID
-  const displayName = doc.title || doc.filename
-  const description = 'Description'
-  const assetType = 'Decal'
-  // const filePath = `./media/${doc.filename}`; // Remove local file path
+  const { name, mimetype, data } = file
 
-  const contentType = mime.contentType(doc.filename)
-
-  if (
-    !contentType ||
-    !['image/png', 'image/jpeg', 'image/bmp', 'image/tga'].includes(contentType)
-  ) {
-    throw new Error(`Unsupported file type: ${contentType}`)
+  if (!SUPPORTED_MIME_TYPES.includes(mimetype)) {
+    throw new Error(`Unsupported file type: ${mimetype}`)
   }
+
+  const apiKey = process.env.ROBLOX_API_KEY
+  const userId = process.env.ROBLOX_USER_ID
 
   if (!apiKey) {
     throw new Error('Roblox API key is not set in environment variables.')
   }
 
-  const form = new FormData()
+  const displayName = name
+  const description = 'Description'
+  const assetType = 'Decal'
 
-  // Fetch the file from R2 instead of local filesystem
-  const file = await getFileFromR2(doc.filename)
+  const blob = new Blob([new Uint8Array(data)], { type: mimetype })
+
+  const form = new FormData()
 
   const requestData = {
     assetType,
@@ -55,7 +51,7 @@ const uploadToRoblox = async (doc: Partial<Media>): Promise<string> => {
   }
 
   form.append('request', JSON.stringify(requestData))
-  form.append('fileContent', file)
+  form.append('fileContent', blob, name)
 
   const response = await fetch('https://apis.roblox.com/assets/v1/assets', {
     method: 'POST',
@@ -70,27 +66,27 @@ const uploadToRoblox = async (doc: Partial<Media>): Promise<string> => {
     throw new Error(`Failed to upload to Roblox: ${response.status} - ${errorText}`)
   }
 
-  let data: Operation = await response.json()
+  let operation: Operation = await response.json()
 
   let delay = 500 // Start with .5 second
   const maxDelay = 10000 // Maximum delay of 10 seconds
 
   do {
     const operationFetch = await fetch(
-      `https://apis.roblox.com/assets/v1/operations/${data.operationId}`,
+      `https://apis.roblox.com/assets/v1/operations/${operation.operationId}`,
       { headers: { 'x-api-key': apiKey } },
     )
 
-    data = (await operationFetch.json()) as Operation
+    operation = (await operationFetch.json()) as Operation
 
-    if (!data.done) {
+    if (!operation.done) {
       await new Promise((resolve) => setTimeout(resolve, delay))
       delay = Math.min(delay * 2, maxDelay) // Exponential backoff
     }
-  } while (!data.done)
+  } while (!operation.done)
 
-  if (data.response) {
-    const assetId = data.response.assetId
+  if (operation.response) {
+    const assetId = operation.response.assetId
     if (assetId) {
       const imageData = await getImageIdFromAssetId(assetId)
       if (imageData) {

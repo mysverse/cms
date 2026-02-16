@@ -1,33 +1,20 @@
 import uploadToRoblox from '@/functions/uploadToRoblox'
 import { Media } from '@/payload-types'
-import type { CollectionAfterChangeHook } from 'payload'
+import type { CollectionBeforeChangeHook } from 'payload'
 
-export const uploadToRobloxHook: CollectionAfterChangeHook<Media> = async ({
-  doc,
-  previousDoc,
+export const uploadToRobloxHook: CollectionBeforeChangeHook<Media> = async ({
+  data,
   operation,
   req,
 }) => {
-  if (
-    operation === 'create' ||
-    !(doc.filesize === previousDoc.filesize) ||
-    !(doc.filename === previousDoc.filename)
-  ) {
+  if (operation === 'create') {
     try {
-      const robloxAssetId = await uploadToRoblox(doc)
-      // Update the document with the robloxAssetId
-      await req.payload.update({
-        req,
-        collection: 'media',
-        id: doc.id,
-        data: {
-          robloxAssetId,
-        },
-      })
+      const robloxAssetId = await uploadToRoblox(req.file)
+      data.robloxAssetId = robloxAssetId
     } catch (error) {
       console.error('Error uploading to Roblox:', error)
       // Optionally handle the error further, e.g., update a status field or notify admin
     }
   }
-  return doc
+  return data
 }
