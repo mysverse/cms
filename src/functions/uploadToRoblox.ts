@@ -1,5 +1,6 @@
 import { getImageIdFromAssetId } from '@/utils/robloxAsset'
 import type { PayloadRequest } from 'payload'
+import sharp from 'sharp'
 
 interface Operation {
   operationId: string
@@ -18,10 +19,14 @@ const uploadToRoblox = async (file?: PayloadRequest['file']): Promise<string> =>
     throw new Error('No file provided')
   }
 
-  const { name, mimetype, data } = file
+  let { name, mimetype, data } = file
 
   if (!SUPPORTED_MIME_TYPES.includes(mimetype)) {
-    throw new Error(`Unsupported file type: ${mimetype}`)
+    // Convert unsupported image types to PNG using sharp
+    const converted = await sharp(data).png().toBuffer()
+    data = converted
+    mimetype = 'image/png'
+    name = name.replace(/\.[^.]+$/, '.png')
   }
 
   const apiKey = process.env.ROBLOX_API_KEY
